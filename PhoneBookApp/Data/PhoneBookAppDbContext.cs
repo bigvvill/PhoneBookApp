@@ -10,8 +10,9 @@ namespace PhoneBookApp.Data
 {
     public class PhoneBookAppDbContext : DbContext
     {
-        public PhoneBookAppDbContext(DbContextOptions<Contact> options) : base(options)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseSqlServer(@"Server=(localdb);Database=PhoneBookAppDb;Trusted_Connection=True;MultipleActiveResults=true");
         }
 
         public DbSet<Contact> Contacts { get; set; }
