@@ -1,4 +1,5 @@
-﻿using PhoneBookApp.Data;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
+using PhoneBookApp.Data;
 using PhoneBookApp.Models;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,67 @@ namespace PhoneBookApp.Controllers
             context.SaveChanges();
 
             Console.WriteLine("\nContact Deleted.\nPress Enter...");
+            Console.ReadLine();
+
+            getInput.MainMenu();
+        }
+
+        public void EditContact()
+        {
+            GetInput getInput = new GetInput();
+            DisplayTable displayTable = new DisplayTable();
+
+            displayTable.DisplayContacts();
+
+            var context = new PhoneBookAppDbContext();
+
+            Console.WriteLine("Edit Contact");
+
+            Console.WriteLine("\nId of contact to Edit:");
+            string contactId = Console.ReadLine();
+            int id = Int32.Parse(contactId);
+
+            var editContact = context.Contacts.Find(id);
+
+            Console.WriteLine("\nCentact Name:");
+            string contactName = Console.ReadLine();
+            Console.WriteLine("\nPhone Number:");
+            string contactNumber = Console.ReadLine();
+
+            editContact.Name = contactName;
+            editContact.PhoneNumber = contactNumber;
+
+            context.Contacts.Update(editContact);
+            context.SaveChanges();
+
+            Console.WriteLine("\nContact Updated.\nPress Enter...");
+            Console.ReadLine();
+
+            getInput.MainMenu();
+        }
+
+        public void SearchContact()
+        {
+            GetInput getInput = new GetInput();
+            //DisplayTable displayTable = new DisplayTable();
+
+            //displayTable.DisplayContacts();
+
+            var context = new PhoneBookAppDbContext();
+
+            Console.WriteLine("Search Contact");
+
+            Console.WriteLine("\nEnter Name or Number to search for:");
+            string contactSearch = Console.ReadLine();
+
+            var searchContact = context.Contacts.Where(j => j.Name.Contains(contactSearch)).ToList();
+            var searchNumber = context.Contacts.Where(j => j.PhoneNumber.Contains(contactSearch)).ToList();
+            searchContact.AddRange(searchNumber);
+
+            FormatTable.ShowContacts(searchContact);
+
+
+            Console.WriteLine($"\n{searchContact.Count} Contact Found.\nPress Enter...");
             Console.ReadLine();
 
             getInput.MainMenu();

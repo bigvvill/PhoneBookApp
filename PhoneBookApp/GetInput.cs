@@ -35,15 +35,15 @@ namespace PhoneBookApp
                 case "1":                    
                     phoneBook.CreateContact();
                     break;
-                //case "2":
-                //    phoneBook.EditContact();
-                //    break;
+                case "2":
+                    phoneBook.EditContact();
+                    break;
                 case "3":                    
                     phoneBook.DeleteContact();
                     break;
-                //case "4":
-                //    SearchContact();
-                //    break;
+                case "4":
+                    phoneBook.SearchContact();
+                    break;
                 case "5":
                     DisplayTable displayTable = new DisplayTable();
                     displayTable.DisplayContacts();

@@ -23,5 +23,19 @@ namespace PhoneBookApp
 
             FormatTable.ShowContacts(contacts);
         }
+
+        public void DisplaySearch()
+        {
+            var context = new PhoneBookAppDbContext();
+
+            List<Contact> contacts = new List<Contact>();
+
+            foreach (var contact in context.Contacts)
+            {
+                contacts.Add(contact);
+            }
+
+            FormatTable.ShowContacts(contacts);
+        }
     }
 }
