@@ -16,13 +16,13 @@ namespace PhoneBookApp
 
             Console.Clear();
             Console.WriteLine("Welcome to the Phone Book App!\n");
-
-            Console.WriteLine("0 - Exit");
+            
             Console.WriteLine("1 - Enter new Contact");
             Console.WriteLine("2 - Edit Contact");
             Console.WriteLine("3 - Delete Contact");
-            Console.WriteLine("4 = Search Contacts");
+            Console.WriteLine("4 - Search Contacts");
             Console.WriteLine("5 - Display Contacts");
+            Console.WriteLine("0 - Exit");
 
             Console.WriteLine("\nEnter Selection:");
             string menuSelection = Console.ReadLine();
