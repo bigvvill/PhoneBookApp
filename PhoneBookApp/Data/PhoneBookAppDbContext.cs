@@ -12,7 +12,7 @@ namespace PhoneBookApp.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb);Database=PhoneBookAppDb;Trusted_Connection=True;MultipleActiveResults=true");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=PhoneBookAppDb;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
 
         public DbSet<Contact> Contacts { get; set; }

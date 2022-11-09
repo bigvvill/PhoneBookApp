@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhoneBookApp.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace PhoneBookApp
     {
         public void MainMenu()
         {
+            PhoneBookAppController phoneBook = new PhoneBookAppController();
+
             Console.Clear();
             Console.WriteLine("Welcome to the Phone Book App!\n");
 
@@ -19,31 +22,32 @@ namespace PhoneBookApp
             Console.WriteLine("2 - Edit Contact");
             Console.WriteLine("3 - Delete Contact");
             Console.WriteLine("4 = Search Contacts");
-            Console.WriteLine("5 - View all Contacts");
+            Console.WriteLine("5 - Display Contacts");
 
             Console.WriteLine("\nEnter Selection:");
             string menuSelection = Console.ReadLine();
 
             switch (menuSelection)
-            {
+            {              
                 case "0":
                     Console.WriteLine("\nGoodBye!");
                     break;
-                //case "1":
-                //    CreateContact();
-                //    break;
+                case "1":                    
+                    phoneBook.CreateContact();
+                    break;
                 //case "2":
-                //    EditContact();
+                //    phoneBook.EditContact();
                 //    break;
-                //case "3":
-                //    DeleteContact();
-                //    break;
+                case "3":                    
+                    phoneBook.DeleteContact();
+                    break;
                 //case "4":
                 //    SearchContact();
                 //    break;
-                //case "5":
-                //    DisplayContacts();
-                //    break;
+                case "5":
+                    DisplayTable displayTable = new DisplayTable();
+                    displayTable.DisplayContacts();
+                    break;
                 default:
                     Console.WriteLine("Invalid selection, please enter a number from 0-5.\nPress Enter...");
                     Console.ReadLine();
