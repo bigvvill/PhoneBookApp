@@ -8,7 +8,7 @@ namespace PhoneBookApp.Data.Dto
 {
     public class ContactReadOnlyDto
     {
-        public int Number { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
     }

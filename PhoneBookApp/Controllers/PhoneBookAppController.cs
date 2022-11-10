@@ -69,8 +69,7 @@ namespace PhoneBookApp.Controllers
             GetInput getInput = new GetInput();
             DisplayTable displayTable = new DisplayTable();
 
-            //displayTable.DisplayContacts();
-            displayTable.DisplayContactsList();
+            displayTable.DisplayContacts();
 
             var context = new PhoneBookAppDbContext();
 
