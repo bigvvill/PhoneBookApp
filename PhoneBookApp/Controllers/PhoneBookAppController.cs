@@ -37,7 +37,7 @@ namespace PhoneBookApp.Controllers
 
             while (!Validation.IsPhoneNumberValid(contactNumber))
             {
-                Console.WriteLine("\nPlease input a valid Centact Name:");
+                Console.WriteLine("\nPlease input a valid Centact Number:");
                 contactNumber = Console.ReadLine();
             }
 
