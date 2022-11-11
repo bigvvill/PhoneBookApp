@@ -67,11 +67,23 @@ namespace PhoneBookApp.Controllers
             Console.WriteLine("\nId of contact to Delete:");
             string contactId = Console.ReadLine();
 
-
+            while (!Validation.IsIdValid(contactId))
+            {
+                Console.WriteLine("\nInvalid entry, please enter the Id of contact to Delete:");
+                contactId = Console.ReadLine();
+            }
 
             int id = Int32.Parse(contactId);
-
             var deleteContact = context.Contacts.Find(id);
+
+            while (deleteContact == null)
+            {
+                Console.WriteLine("\nInvalid entry, please enter a valid Id:");
+                contactId = Console.ReadLine();
+
+                id = Int32.Parse(contactId);
+                deleteContact = context.Contacts.Find(id);
+            }            
 
             context.Contacts.Remove(deleteContact);
             context.SaveChanges();
@@ -95,9 +107,24 @@ namespace PhoneBookApp.Controllers
 
             Console.WriteLine("\nId of contact to Edit:");
             string contactId = Console.ReadLine();
-            int id = Int32.Parse(contactId);
 
+            while (!Validation.IsIdValid(contactId))
+            {
+                Console.WriteLine("\nInvalid entry, please enter the Id of contact to Delete:");
+                contactId = Console.ReadLine();
+            }
+
+            int id = Int32.Parse(contactId);
             var editContact = context.Contacts.Find(id);
+
+            while (editContact == null)
+            {
+                Console.WriteLine("\nInvalid entry, please enter a valid Id:");
+                contactId = Console.ReadLine();
+
+                id = Int32.Parse(contactId);
+                editContact = context.Contacts.Find(id);
+            }
 
             Console.WriteLine("\nCentact Name:");
             string contactName = Console.ReadLine();
