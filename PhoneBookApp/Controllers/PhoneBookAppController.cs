@@ -66,6 +66,9 @@ namespace PhoneBookApp.Controllers
 
             Console.WriteLine("\nId of contact to Delete:");
             string contactId = Console.ReadLine();
+
+
+
             int id = Int32.Parse(contactId);
 
             var deleteContact = context.Contacts.Find(id);

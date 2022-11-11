@@ -17,7 +17,7 @@ namespace PhoneBookApp
 
             foreach (char c in stringInput)
             {
-                if (!Char.IsLetter(c) && c !=' ')
+                if (!Char.IsLetter(c) && c != ' ')
                     return false;
             }
 
@@ -33,11 +33,28 @@ namespace PhoneBookApp
 
             foreach (char c in stringInput)
             {
-                if (!Char.IsNumber(c) && c != '+' && c !='-' && c !='(' && c !=')' && c !='.')
+                if (!Char.IsNumber(c) && c != '+' && c != '-' && c != '(' && c != ')' && c != '.')
                     return false;
             }
 
             return true;
         }
-    }
+
+
+        public static bool IsIdValid(string? stringInput)
+        {
+            if (String.IsNullOrEmpty(stringInput))
+            {
+                return false;
+            }
+
+            foreach (char c in stringInput)
+            {
+                if (!Char.IsDigit(c) && c != ' ')
+                    return false;
+            }
+
+            return true;
+        }
+    }  
 }
