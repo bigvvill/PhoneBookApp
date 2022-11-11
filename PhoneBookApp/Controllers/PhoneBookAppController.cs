@@ -19,12 +19,27 @@ namespace PhoneBookApp.Controllers
 
             var newContact = new Contact();
 
+            bool isNameValid = false;
+
             Console.WriteLine("New Contact");
 
             Console.WriteLine("\nCentact Name:");
-            string contactName = Console.ReadLine();
+            string contactName = Console.ReadLine();            
+
+            while (!Validation.IsNameValid(contactName))
+            {
+                Console.WriteLine("\nPlease input a valid Centact Name:");
+                contactName = Console.ReadLine();
+            }
+
             Console.WriteLine("\nPhone Number:");
             string contactNumber = Console.ReadLine();
+
+            while (!Validation.IsPhoneNumberValid(contactNumber))
+            {
+                Console.WriteLine("\nPlease input a valid Centact Name:");
+                contactNumber = Console.ReadLine();
+            }
 
             newContact.Name = contactName;
             newContact.PhoneNumber = contactNumber;            
