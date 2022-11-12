@@ -47,6 +47,9 @@ namespace PhoneBookApp
                 case "5":
                     DisplayTable displayTable = new DisplayTable();
                     displayTable.DisplayContacts();
+                    Console.WriteLine("\nPress Enter...");
+                    Console.ReadLine();
+                    MainMenu();
                     break;
                 default:
                     Console.WriteLine("Invalid selection, please enter a number from 0-5.\nPress Enter...");
