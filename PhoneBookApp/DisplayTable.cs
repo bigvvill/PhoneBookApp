@@ -1,6 +1,5 @@
 ﻿using PhoneBookApp.Controllers;
 using PhoneBookApp.Data;
-using PhoneBookApp.Data.Dto;
 using PhoneBookApp.Models;
 using System;
 using System.Collections.Generic;
@@ -22,24 +21,6 @@ namespace PhoneBookApp
             {
                 contacts.Add(contact);                
             }
-
-            List<ContactDto> contactsDto = new List<ContactDto>();
-            int listNumber = 1;
-            foreach (var contact in contacts)
-            {
-                DtoController.ToContactDto(contact);
-
-                contactsDto.Add(new ContactDto
-                {
-                    Id = listNumber,
-                    Name = contact.Name,
-                    PhoneNumber = contact.PhoneNumber
-                });
-
-                listNumber++;
-            }
-
-
 
             FormatTable.ShowContacts(contacts);
         }        
