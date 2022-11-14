@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhoneBookApp.Data.Dto
 {
-    public class ContactReadOnlyDto
+    public class ContactDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

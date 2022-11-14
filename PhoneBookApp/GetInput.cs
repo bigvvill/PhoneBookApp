@@ -31,6 +31,7 @@ namespace PhoneBookApp
             {              
                 case "0":
                     Console.WriteLine("\nGoodBye!");
+                    Environment.Exit(0);
                     break;
                 case "1":                    
                     phoneBook.CreateContact();

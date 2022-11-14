@@ -64,13 +64,23 @@ namespace PhoneBookApp.Controllers
 
             Console.WriteLine("Delete Contact");
 
-            Console.WriteLine("\nId of contact to Delete:");
+            Console.WriteLine("\nId of contact to Delete or 0 to go back to Menu:");
             string contactId = Console.ReadLine();
+
+            if (contactId == "0")
+            {
+                getInput.MainMenu();
+            }
 
             while (!Validation.IsIdValid(contactId))
             {
-                Console.WriteLine("\nInvalid entry, please enter the Id of contact to Delete:");
+                Console.WriteLine("\nInvalid entry, please enter the Id of contact to Delete or 0 to go back to Menu:");
                 contactId = Console.ReadLine();
+
+                if (contactId == "0")
+                {
+                    getInput.MainMenu();
+                }
             }
 
             int id = Int32.Parse(contactId);
@@ -78,8 +88,13 @@ namespace PhoneBookApp.Controllers
 
             while (deleteContact == null)
             {
-                Console.WriteLine("\nInvalid entry, please enter a valid Id:");
+                Console.WriteLine("\nInvalid entry, please enter a valid Id or 0 to go back to Menu:");
                 contactId = Console.ReadLine();
+
+                if (contactId == "0")
+                {
+                    getInput.MainMenu();
+                }
 
                 id = Int32.Parse(contactId);
                 deleteContact = context.Contacts.Find(id);
@@ -105,13 +120,23 @@ namespace PhoneBookApp.Controllers
 
             Console.WriteLine("Edit Contact");
 
-            Console.WriteLine("\nId of contact to Edit:");
+            Console.WriteLine("\nId of contact to Edit or 0 to go back to Menu:");
             string contactId = Console.ReadLine();
+
+            if (contactId == "0")
+            {
+                getInput.MainMenu();
+            }
 
             while (!Validation.IsIdValid(contactId))
             {
-                Console.WriteLine("\nInvalid entry, please enter the Id of contact to Delete:");
+                Console.WriteLine("\nInvalid entry, please enter the Id of contact to Delete or 0 to go back to Menu:");
                 contactId = Console.ReadLine();
+
+                if (contactId == "0")
+                {
+                    getInput.MainMenu();
+                }
             }
 
             int id = Int32.Parse(contactId);
@@ -119,8 +144,13 @@ namespace PhoneBookApp.Controllers
 
             while (editContact == null)
             {
-                Console.WriteLine("\nInvalid entry, please enter a valid Id:");
+                Console.WriteLine("\nInvalid entry, please enter a valid Id or 0 to go back to Menu:");
                 contactId = Console.ReadLine();
+
+                if (contactId == "0")
+                {
+                    getInput.MainMenu();
+                }
 
                 id = Int32.Parse(contactId);
                 editContact = context.Contacts.Find(id);
@@ -154,8 +184,13 @@ namespace PhoneBookApp.Controllers
 
             Console.WriteLine("Search Contact");
 
-            Console.WriteLine("\nEnter Name or Number to search for:");
+            Console.WriteLine("\nEnter Name or Number to search for or 0 to go back to Menu:");
             string contactSearch = Console.ReadLine();
+
+            if (contactSearch == "0")
+            {
+                getInput.MainMenu();
+            }
 
             var searchContact = context.Contacts.Where(j => j.Name.Contains(contactSearch)).ToList();
             var searchNumber = context.Contacts.Where(j => j.PhoneNumber.Contains(contactSearch)).ToList();
@@ -163,9 +198,17 @@ namespace PhoneBookApp.Controllers
 
             FormatTable.ShowContacts(searchContact);
 
-
-            Console.WriteLine($"\n{searchContact.Count} Contact Found.\nPress Enter...");
-            Console.ReadLine();
+            if (searchContact.Count == 1)
+            {
+                Console.WriteLine($"\n{searchContact.Count} Contact Found.\nPress Enter...");
+                Console.ReadLine();
+            }
+            else 
+            {
+                Console.WriteLine($"\n{searchContact.Count} Contacts Found.\nPress Enter...");
+                Console.ReadLine();
+            }
+            
 
             getInput.MainMenu();
         }
